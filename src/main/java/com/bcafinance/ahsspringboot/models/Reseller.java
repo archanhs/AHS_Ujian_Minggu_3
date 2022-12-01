@@ -1,8 +1,11 @@
 package com.bcafinance.ahsspringboot.models;
 
+import com.bcafinance.ahsspringboot.utils.ConstantMessage;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /*
@@ -22,11 +25,12 @@ public class Reseller {
     @Column(name = "ResellerID")
     private Long id;
 
+    @NotEmpty(message = ConstantMessage.WARNING_EMAIL_REQUIRED)
     @Column(name = "ResellerName",length = 60, nullable = false,unique = true)
     private String resellerName;
 
-    @Column(name="BusinessType", length = 60,nullable = false,unique = false)
-    private String businessType;
+//    @Column(name="BusinessType", length = 60,nullable = false,unique = false)
+//    private String businessType;
 
     @Column(name = "Address",length = 255,nullable = false,unique = true)
     private String address;
@@ -40,8 +44,12 @@ public class Reseller {
     @Column(name = "Email",length = 50,nullable = false,unique = true)
     private String email;
 
+    @ManyToOne
+    private BusinessType businessType;
+
+    @NotNull(message = ConstantMessage.WARNING_NUMBER_OF_EMPLOYEES_REQUIRED)
     @Column(name="NumberEmployees",nullable = false)
-    private int numberEmployees;
+    private Integer numberEmployees;
 
     @Column(name = "CreatedBy",nullable = false)
     private String createdBy = "1";

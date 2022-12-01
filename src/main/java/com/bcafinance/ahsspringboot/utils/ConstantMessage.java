@@ -56,7 +56,14 @@ public class ConstantMessage {
     public final static String WARNING_RESELLER_NOT_FOUND = "RESELLER BELUM TERDAFTAR";
     public final static String WARNING_DATA_NOT_FOUND = "DATA RESELLER TIDAK DITEMUKAN";
     public final static String WARNING_NUMBER_OF_EMPLOYEES = "JUMLAH KARYAWAN TIDAK BOLEH KURANG DARI 1";
-    public final static String WARNING_IS_ACTIVE_RESELLER = "INPUTAN TIDAK VALID, HARUS 1 ATAU 0";
+    public final static String WARNING_EMAIL_REQUIRED = "EMAIL HARUS DIISI";
+
+    public final static String WARNING_NUMBER_OF_EMPLOYEES_REQUIRED = "JUMLAH KARYAWAN HARUS DIISI";
+
+    /*Reseller*/
+    public final static String WARNING_BUSINESS_NAME_REQUIRED = "NAMA BISNIS HARUS TERISI";
+
+
 
 
 

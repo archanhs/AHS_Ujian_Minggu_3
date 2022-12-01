@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -37,7 +38,7 @@ public class ResellerController {
 
     @PostMapping("/reseller")
     public ResponseEntity<Object>
-    saveReseller(@RequestBody Reseller reseller) throws Exception {
+    saveReseller(@Valid @RequestBody Reseller reseller) throws Exception {
         if(reseller==null)throw new ResourceNotFoundException(ConstantMessage.ERROR_NO_CONTENT);
         resellerService.saveReseller(reseller);
         return new ResponseHandler().generateResponse(ConstantMessage.SUCCESS_SAVE, HttpStatus.CREATED,null,null,null);
@@ -142,6 +143,15 @@ public class ResellerController {
         resellerService.updateResellerByID(reseller);
         return new ResponseHandler().
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,"",null,null);
+    }
+
+    @PostMapping("/reseller/bat")
+    public ResponseEntity<Object>
+    saveAllResellers(@RequestBody List<Reseller> resellers) throws Exception {
+
+        if(resellers==null)throw new ResourceNotFoundException(ConstantMessage.ERROR_NO_CONTENT);
+        resellerService.saveAllReseller(resellers);
+        return new ResponseHandler().generateResponse(ConstantMessage.SUCCESS_SAVE, HttpStatus.CREATED,null,null,null);
     }
 
 }

@@ -93,7 +93,6 @@ public class ResellerService {
     }
     public void saveReseller(Reseller reseller) throws Exception{
         if(reseller.getResellerName()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-        if(reseller.getBusinessType()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
         if(reseller.getAddress()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
         if(reseller.getPhone()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
         if(reseller.getCountry()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
@@ -199,6 +198,11 @@ public class ResellerService {
             resellers.setIsActive(r.getIsActive());
         }
 
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public void saveAllReseller(List<Reseller> ls){
+        resellerRepo.saveAll(ls);
     }
 
 
