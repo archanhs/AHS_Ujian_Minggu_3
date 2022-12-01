@@ -85,10 +85,10 @@ public class ResellerService {
     }
     public List<Reseller> findByAddress(String address) throws Exception
     {
-        if (resellerRepo.searchByAddressLike(address).size()==0){
+        if (resellerRepo.searchByAddressContaining(address).size()==0){
             throw new ResourceNotFoundException(ConstantMessage.WARNING_DATA_NOT_FOUND);
         }else{
-            return resellerRepo.searchByAddressLike(address);
+            return resellerRepo.searchByAddressContaining(address);
         }
     }
     public void saveReseller(Reseller reseller) throws Exception{

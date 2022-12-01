@@ -30,7 +30,7 @@ public interface ResellerRepo extends JpaRepository<Reseller,Long> {
 
     List<Reseller> findByResellerNameNotContaining(String name);
 
-    List<Reseller> searchByAddressLike(@Param("address") String address);
+    List<Reseller> searchByAddressContaining(@Param("address") String address);
 
 
 //    @Query("SELECT p FROM Products p WHERE p.name LIKE ?1%")
