@@ -166,10 +166,17 @@ public class ResellerService {
         }
 
         if(r.getCountry() != null
-                && !Objects.equals(resellers.getAddress(),r.getAddress())
-                && !r.getAddress().equals(""))
+                && !Objects.equals(resellers.getCountry(),r.getCountry())
+                && !r.getCountry().equals(""))
         {
-            resellers.setAddress(r.getAddress());//BERARTI ADA PERUBAHAN DI SINI
+            resellers.setCountry(r.getCountry());//BERARTI ADA PERUBAHAN DI SINI
+        }
+
+        if(r.getBusinessType() != null
+                && !Objects.equals(resellers.getBusinessType(),r.getBusinessType())
+                && !r.getBusinessType().equals(""))
+        {
+            resellers.setBusinessType(r.getBusinessType());//BERARTI ADA PERUBAHAN DI SINI
         }
 
         if(r.getPhone() != null &&
@@ -180,7 +187,7 @@ public class ResellerService {
             resellers.setPhone(r.getPhone());
         }
 
-        if(!Objects.equals(resellers.getNumberEmployees(),r.getNumberEmployees()))
+        if(!Objects.equals(resellers.getNumberEmployees(),r.getNumberEmployees()) && r.getNumberEmployees()!=0)
         {
             if (r.getNumberEmployees()<=0){
                 throw new ResourceNotFoundException(ConstantMessage.WARNING_NUMBER_OF_EMPLOYEES);
