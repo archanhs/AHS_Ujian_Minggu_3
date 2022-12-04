@@ -57,11 +57,69 @@ public class ConstantMessage {
     public final static String WARNING_DATA_NOT_FOUND = "DATA RESELLER TIDAK DITEMUKAN";
     public final static String WARNING_NUMBER_OF_EMPLOYEES = "JUMLAH KARYAWAN TIDAK BOLEH KURANG DARI 1";
     public final static String WARNING_EMAIL_REQUIRED = "EMAIL HARUS DIISI";
+    public final static String WARNING_RESELLER_NAME_REQUIRED = "RESELER NAME HARUS DIISI";
+
+
 
     public final static String WARNING_NUMBER_OF_EMPLOYEES_REQUIRED = "JUMLAH KARYAWAN HARUS DIISI";
 
-    /*Reseller*/
+    /*Business Type*/
     public final static String WARNING_BUSINESS_NAME_REQUIRED = "NAMA BISNIS HARUS TERISI";
+    public final static String WARNING_BUSINESS_TYPE_NOT_FOUND = "TIPE BISNIS BELUM TERDAFTAR";
+
+    /*Expedition*/
+    public final static String WARNING_EXPEDITION_NAME_REQUIRED = "NAMA EXPEDISI HARUS TERISI";
+    public final static String WARNING_EKSPEDITION_NOT_FOUND = "EKSPEDISI BELUM TERDAFTAR";
+
+
+    /*Division*/
+    public final static String WARNING_DIVISION_NAME_MANDATORY = "NAMA DIVISI HARUS TERISI";
+    public final static String WARNING_DIVISION_NAME_LENGTH = "PANJANG NAMA DIVISI TIDAK SESUAI";
+    public final static String WARNING_DIVISION_DESC_MANDATORY = "DISKRIPSI DIVISI HARUS TERISI";
+
+    /*Employee*/
+    public final static String WARNING_EMPL_EMAIL_MANDATORY = "EMAIL EMPLOYEE HARUS TERISI";
+    public final static String WARNING_EMPL_MAX_LENGTH_EMAIL = "PANJANG EMAIL EMPLOYEE TIDAK SESUAI";
+    public final static String WARNING_EMPL_MAX_LENGTH_PHONE = "PANJANG NO TELEPON EMPLOYEE TIDAK SESUAI";
+
+    public final static String WARNING_NAME_REQUIRED = "NAMA HARUS TERISI";
+
+    public final static String WARNING_ADDRESS_REQUIRED = "ALAMAT HARUS TERISI";
+    public final static String WARNING_PHONE_REQUIRED = "NO TELP HARUS TERISI";
+
+    public final static String WARNING_NAME_MAX_LENGTH = "PANJANG NAMA TIDAK SESUAI";
+
+    public final static String WARNING_PHONE_MAX_LENGTH = "PANJANG NO TELEPON TIDAK SESUAI";
+
+
+    public final static String WARNING_EMAIL_MAX_LENGTH = "PANJANG EMAIL TIDAK SESUAI";
+
+
+    public final static String WARNING_BUSINESS_DESCRIPTION_REQUIRED = "DIKRIPSI BISNIS HARUS TERISI";
+
+    public final static String WARNING_NAME_EXIST = "NAMA SUDAH TERDAFTAR";
+
+    public final static String SUCCESS_SEND_EMAIL = "SILAHKAN CEK EMAIL YANG TELAH ANDA DAFTARKAN";
+
+
+    public final static String WARNING_BUSINESS_CATEGORY_MAX_LENGTH = "PANJANG CATEGORY BISNIS TIDAK SESUAI";
+
+
+    public final static String WARNING_BUSINESS_CATEGORY_REQUIRED = "KATEGORI BISNIS HARUS TERISII";
+
+
+    public final static String WARNING_BIRTHDATE_REQUIRED = "TANGGAL LAHIR HARUS TERISII";
+
+    public final static String WARNING_KODEPOS_REQUIRED = "KODEPOS HARUS TERISII";
+
+
+
+
+
+
+
+
+
 
 
 

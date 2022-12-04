@@ -11,6 +11,7 @@ Version 1.0
 import com.bcafinance.ahsspringboot.handler.FormatValidation;
 import com.bcafinance.ahsspringboot.handler.ResourceNotFoundException;
 import com.bcafinance.ahsspringboot.models.Customers;
+import com.bcafinance.ahsspringboot.models.Expedition;
 import com.bcafinance.ahsspringboot.models.Reseller;
 import com.bcafinance.ahsspringboot.repos.ResellerRepo;
 import com.bcafinance.ahsspringboot.utils.ConstantMessage;
@@ -78,6 +79,12 @@ public class ResellerService {
         return resellerRepo.findByEmail(email).orElseThrow(()->
                 new ResourceNotFoundException(ConstantMessage.WARNING_RESELLER_NOT_FOUND));
     }
+
+    public Reseller findByIdReseller(Long id) throws Exception
+    {
+        return resellerRepo.findById(id).orElseThrow(()->
+                new ResourceNotFoundException(ConstantMessage.WARNING_RESELLER_NOT_FOUND));
+    }
     public Reseller findByNameReseller(String name) throws Exception
     {
         return resellerRepo.findByResellerName(name).orElseThrow(()->
@@ -92,30 +99,30 @@ public class ResellerService {
         }
     }
     public void saveReseller(Reseller reseller) throws Exception{
-        if(reseller.getResellerName()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-        if(reseller.getAddress()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-        if(reseller.getPhone()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-        if(reseller.getCountry()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-        if(reseller.getEmail()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-
-        FormatValidation.phoneNumberFormatValidation(reseller.getPhone());
-        FormatValidation.emailFormatValidation(reseller.getEmail());
-        //filter email exist
-        Optional<Reseller> resellerByEmail = resellerRepo.findByEmail(reseller.getEmail());
-        if(resellerByEmail.isPresent())
-        {
-            throw new ResourceNotFoundException(ConstantMessage.WARNING_EMAIL_EXIST);
-        }
-        //filter name exist
-        Optional<Reseller> resellerByName = resellerRepo.findByResellerName(reseller.getResellerName());
-        if(resellerByName.isPresent())
-        {
-            throw new ResourceNotFoundException(ConstantMessage.WARNING_RESELLER_NAME_EXIST);
-        }
-        //filter count karyawan
-        if (reseller.getNumberEmployees()<=0){
-            throw new ResourceNotFoundException(ConstantMessage.WARNING_NUMBER_OF_EMPLOYEES);
-        }
+//        if(reseller.getResellerName()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
+//        if(reseller.getAddress()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
+//        if(reseller.getPhone()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
+//        if(reseller.getCountry()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
+//        if(reseller.getEmail()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
+//
+//        FormatValidation.phoneNumberFormatValidation(reseller.getPhone());
+//        FormatValidation.emailFormatValidation(reseller.getEmail());
+//        //filter email exist
+//        Optional<Reseller> resellerByEmail = resellerRepo.findByEmail(reseller.getEmail());
+//        if(resellerByEmail.isPresent())
+//        {
+//            throw new ResourceNotFoundException(ConstantMessage.WARNING_EMAIL_EXIST);
+//        }
+//        //filter name exist
+//        Optional<Reseller> resellerByName = resellerRepo.findByResellerName(reseller.getResellerName());
+//        if(resellerByName.isPresent())
+//        {
+//            throw new ResourceNotFoundException(ConstantMessage.WARNING_RESELLER_NAME_EXIST);
+//        }
+//        //filter count karyawan
+//        if (reseller.getNumberEmployees()<=0){
+//            throw new ResourceNotFoundException(ConstantMessage.WARNING_NUMBER_OF_EMPLOYEES);
+//        }
         resellerRepo.save(reseller);
     }
 
@@ -200,10 +207,19 @@ public class ResellerService {
 
     }
 
+    public void addExpedition(Expedition expedition, Long resellerId) throws Exception {
+        Reseller reseller = resellerRepo.findById(resellerId).
+                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_RESELLER_NOT_FOUND));
+        reseller.getExpeditions().add(expedition);
+        saveReseller(reseller);
+    }
+
     @Transactional(rollbackFor = {Exception.class})
     public void saveAllReseller(List<Reseller> ls){
         resellerRepo.saveAll(ls);
     }
+
+
 
 
 
