@@ -62,6 +62,19 @@ public class RegisterService {
         {
             throw new ResourceNotFoundException(ConstantMessage.WARNING_NAME_EXIST);
         }
+
+        int firstDigit = Integer.parseInt(Integer.toString(register.getKodepos()).substring(0, 1));
+        if(firstDigit == 0)
+        {
+            throw new ResourceNotFoundException(ConstantMessage.WARNING_NAME_EXIST);
+        }
         registerRepo.save(register);
+    }
+
+
+    public Register activationToken(String token) throws Exception
+    {
+        return registerRepo.findByToken(token).orElseThrow(()->
+                new ResourceNotFoundException(ConstantMessage.WARNING_OTENTIKASI_FAIL));
     }
 }

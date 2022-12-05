@@ -105,7 +105,7 @@ public class SMTPCore {
     }
 
     public boolean sendMailWithAttachment(String[] strMailTo, String strSubject, String strContentMessage,
-                                          String strLayer, String[] attachFiles) throws ResourceNotFoundException {
+                                          String strLayer) throws ResourceNotFoundException {
         Properties execProp ;
 
 
@@ -155,20 +155,20 @@ public class SMTPCore {
             // creates multi-part
             multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
-
-            // adds attachments
-            if (attachFiles != null && attachFiles.length > 0) {
-                for (String filePath : attachFiles) {
-                    MimeBodyPart attachPart = new MimeBodyPart();
-
-                    try {
-                        attachPart.attachFile(filePath);
-                    } catch (Exception ex) {
-                        throw new Exception(ex.getMessage());
-                    }
-                    multipart.addBodyPart(attachPart);
-                }
-            }
+//
+//            // adds attachments
+//            if (attachFiles != null && attachFiles.length > 0) {
+//                for (String filePath : attachFiles) {
+//                    MimeBodyPart attachPart = new MimeBodyPart();
+//
+//                    try {
+//                        attachPart.attachFile(filePath);
+//                    } catch (Exception ex) {
+//                        throw new Exception(ex.getMessage());
+//                    }
+//                    multipart.addBodyPart(attachPart);
+//                }
+//            }
 
             // sets the multi-part as e-mail's content
             message.setContent(multipart);

@@ -112,6 +112,16 @@ public class ConstantMessage {
 
     public final static String WARNING_KODEPOS_REQUIRED = "KODEPOS HARUS TERISII";
 
+    public final static String WARNING_OTENTIKASI_FAIL = "OTENTIKASI GAGAL";
+
+    public final static String SUCCESS_OTENTIKASI = "EMAIL VALID";
+    
+    public final static String WARNING_KODEPOS_NOT_START_0 = "KODEPOS TIDAK BOLEH DIMULAI DARI NOL";
+
+
+
+
+
 
 
 

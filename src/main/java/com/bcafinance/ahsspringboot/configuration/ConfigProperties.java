@@ -22,6 +22,7 @@ public class ConfigProperties {
     private static String emailStartTLSEnable;
     private static String emailSMTPSocketFactoryClass;
 
+
     @Value("${email.username}")
     private void setEmailUserName(String emailUserName) {
         this.emailUserName = emailUserName;

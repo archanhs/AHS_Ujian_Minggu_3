@@ -19,4 +19,6 @@ public interface RegisterRepo extends JpaRepository<Register,Long> {
     Optional<Register> findByEmail(String email);
 
     Optional<Register> findByRegisterName(String name);
+
+    Optional<Register> findByToken(String token);
 }
